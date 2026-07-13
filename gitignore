@@ -1,0 +1,184 @@
+# ================================
+# MAVEN
+# ================================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.properties
+
+# ================================
+# INTELLIJ IDEA
+# ================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/datasources.xml
+.idea/dataSources.ids
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/gradle.xml
+.idea/libraries
+.idea/modules.xml
+*.classpath
+*.project
+*.settings/
+
+# ================================
+# SPRING BOOT
+# ================================
+# Local application properties with secrets
+application-local.properties
+application-local.yml
+application-dev.properties
+application-dev.yml
+application.properties
+application-prod.yml
+application-staging.properties
+application-staging.yml
+
+# ================================
+# SENSITIVE / SECRET FILES
+# Never push these to Git EVER
+# ================================
+# Database credentials
+application-secrets.properties
+application-secrets.yml
+secrets.properties
+secrets.yml
+*.env
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# API Keys and tokens
+api-keys.properties
+keys.properties
+
+# SSL / TLS certificates and keystores
+*.jks
+*.keystore
+*.truststore
+*.p12
+*.pfx
+*.pem
+*.key
+*.crt
+*.cer
+*.der
+
+# ================================
+# LOGS
+# ================================
+*.log
+logs/
+log/
+spring.log
+*.log.*
+
+# ================================
+# COMPILED CLASS FILES
+# ================================
+*.class
+
+# ================================
+# PACKAGE FILES
+# ================================
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ================================
+# OS GENERATED FILES
+# ================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ================================
+# ECLIPSE (if teammates use it)
+# ================================
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache/
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ================================
+# VSCODE (if teammates use it)
+# ================================
+.vscode/
+*.code-workspace
+
+# ================================
+# DOCKER (keep Dockerfile, ignore local overrides)
+# ================================
+docker-compose.override.yml
+.docker/
+
+# ================================
+# DATABASE FILES (local H2 etc.)
+# ================================
+*.db
+*.sqlite
+*.h2.db
+*.mv.db
+*.trace.db
+/data/
+
+# ================================
+# SONAR
+# ================================
+.sonar/
+.sonarqube/
+
+# ================================
+# TEMPORARY FILES
+# ================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
