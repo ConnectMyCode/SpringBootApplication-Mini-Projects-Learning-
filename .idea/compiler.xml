@@ -8,11 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Spring6ValueAndPropertySource" />
         <module name="Spring8BeanLifeCycle" />
-        <module name="SpringRunnerApplication10" />
         <module name="Spring7ScopeAnnotationSingletonPrototypeRequestSessionApplication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="SpringRunnerApplication10" target="17" />
       <module name="SpringRunnerSpringApplication10" target="25" />
     </bytecodeTargetLevel>
   </component>
