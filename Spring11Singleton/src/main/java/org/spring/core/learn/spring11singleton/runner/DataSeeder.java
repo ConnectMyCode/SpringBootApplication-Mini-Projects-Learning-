@@ -4,7 +4,9 @@ import org.spring.core.learn.spring11singleton.entity.Employee;
 import org.spring.core.learn.spring11singleton.repository.EmployeeRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataSeeder implements ApplicationRunner {
 
 private final EmployeeRepository empRepo;

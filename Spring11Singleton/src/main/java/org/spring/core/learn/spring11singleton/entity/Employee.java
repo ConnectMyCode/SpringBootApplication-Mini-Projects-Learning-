@@ -2,7 +2,11 @@ package org.spring.core.learn.spring11singleton.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "employees")
 public class Employee {
@@ -23,32 +27,16 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNamel() {
-        return namel;
     }
 
     public void setNamel(String namel) {
         this.namel = namel;
     }
 
-    public String getDepartement() {
-        return departement;
-    }
-
     public void setDepartement(String departement) {
         this.departement = departement;
-    }
-
-    public double getSalary() {
-        return salary;
     }
 
     public void setSalary(double salary) {
