@@ -1,0 +1,67 @@
+########################################
+# Maven
+########################################
+# Compiled output - present inside EVERY module folder
+target/
+
+# Maven wrapper - not needed in repo, regenerated via `mvn -N wrapper:wrapper`
+.mvn/
+mvnw
+mvnw.cmd
+
+########################################
+# IntelliJ IDEA
+########################################
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+########################################
+# Eclipse (in case you switch/collaborate)
+########################################
+.classpath
+.project
+.settings/
+bin/
+
+########################################
+# VS Code (in case you switch/collaborate)
+########################################
+.vscode/
+
+########################################
+# Compiled class files (belt & suspenders, target/ already covers this)
+########################################
+*.class
+
+########################################
+# Logs
+########################################
+*.log
+logs/
+
+########################################
+# Sensitive / environment-specific files
+# -> NEVER push real credentials, DB passwords, API keys
+########################################
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secrets.properties
+
+########################################
+# OS-generated files
+########################################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+########################################
+# Packaged artifacts (jar/war built by Maven)
+########################################
+*.jar
+*.war
+!.mvn/wrapper/maven-wrapper.jar

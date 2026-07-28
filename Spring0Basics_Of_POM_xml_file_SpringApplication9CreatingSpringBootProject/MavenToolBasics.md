@@ -1,0 +1,35 @@
+![img.png](MavenBuild.png)
+
+Project parameters:
+1.	groupId
+2.	artifactId
+3.	version
+      A groupId is a unique id, used to identify a set of projects developed by that group/company.
+      To make a groupId as unique, it is recommended to use reverse domain name of the organization as groupId.
+      ex: in.ashokit
+      com.infosys
+      artifactId is nothing but the project name, with which you want to create a jar/war file of the project.
+      version is the version of the project.
+      pom.xml(project object model):
+      •	This file is used to define the dependencies of a project.
+      •	The dependency means, saying that  My project needs the support of another project or library.
+
+
+
+![img.png](PomxmlDependencyAddedExample.png)
+
+
+
+•	When you add a depedency in pom.xml, maven will do the following.
+
+•	1. It will search for the library in the local repository(C:\Users\Lenovo\.m2\repository).
+
+•	2. If not exist, then Maven will search for the library in the central repository, and then downloads it into local repository.
+
+•	3. Now maven adds the dependencies to the compile classpath, and test classpath.
+
+
+![MavenProjectLifeCycleStages.png](MavenProjectLifeCycleStages.png)
+
+
+

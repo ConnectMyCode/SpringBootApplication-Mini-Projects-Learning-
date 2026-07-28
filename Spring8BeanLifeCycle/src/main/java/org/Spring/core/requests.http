@@ -1,0 +1,24 @@
+###Test dto
+GET https://localhost:8080/dto
+
+### Test lazy
+GET http://localhost:8080/lazy
+
+### Eager Bean - created at startup
+GET http://localhost:8080/eager
+
+### PostConstruct Example
+GET http://localhost:8080/postConstructExample
+
+### InitializingBean Interface - afterPropertiesSet()
+GET http://localhost:8080/initializingBeansInterface
+
+### PreDestroy
+GET http://localhost:8080/preDestroy
+
+### DisposableBean Interface - destroy()
+GET http://localhost:8080/disposableBeanInterface
+
+### ApplicationContextAwareAndBeanNameAwareBean Interface -setApplicationContext() and setBeanName()
+GET http://localhost:8080/applicationContextAwareAndBeanNameAwareBean
+
