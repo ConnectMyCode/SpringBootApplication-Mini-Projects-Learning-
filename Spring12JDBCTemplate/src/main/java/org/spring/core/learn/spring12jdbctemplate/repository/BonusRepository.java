@@ -17,6 +17,9 @@ public class BonusRepository {
 
     public double calculateBonus(int empno)
     {
+        // executeFunction(returnType, inputParams...) -> calls the DB function
+        // and maps the returned scalar value into the given Java type.
+
         return bonusFunctionCall.executeFunction(Double.class, empno);
     }
 

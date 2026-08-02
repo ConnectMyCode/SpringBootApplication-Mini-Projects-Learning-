@@ -29,7 +29,7 @@ public class EmployeeRepository {
     public void createTable() {
         String sql = "CREATE TABLE IF NOT EXISTS EMP (" +
                 "EMPNO  INT PRIMARY KEY, " +
-                "ENAME VARCHAR(30)" +
+                "ENAME VARCHAR(30), " +
                 "SAL DOUBLE, " +
                 "DEPARTMENT VARCHAR(40))";
         jdbcTemplate.execute(sql);

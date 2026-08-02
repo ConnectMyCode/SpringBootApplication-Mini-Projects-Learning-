@@ -1,0 +1,33 @@
+ ========================
+     Spring Boot + JDBC
+    ========================
+
+   => JDBC : Java Database Connectivity
+
+   => JDBC Technology allows A Java application to perform CRUD operations.
+
+   => C(Create) R(Read) U(Update) D(Delete)
+
+   => The Steps required to Perform a Database operation(s) using JDBC Technology:
+          Step-1: Load the JDBC Driver
+
+          Step-2: Establish a Connection
+
+          Step-3: Create a Statement
+
+          Steo-4: Execute the SQL
+
+          Step-5: Process the result
+
+          Step-6: Close the connection.
+
+   => Each program/application requires the same above steps to perform a Database operation.
+
+   => This is a repeatative code, also called as Boiler-plate code.
+
+   => In Spring Boot + JDBC, The Spring Boot will automatically handles this boiler-plate code.
+
+   => As a developer, you need to tell the Spring Boot about,
+             ** what SQL query you want to execute,
+
+             ** What you want to do with the result.
