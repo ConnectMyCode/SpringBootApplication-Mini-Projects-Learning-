@@ -1,0 +1,93 @@
+# Spring Boot Data JPA
+
+  => Can JDBC API send objects to a Database?
+    Answer: No.
+   * then how?
+
+   * You have to do the following:
+     1. call getters to retrieve the data from an object.
+     2. construct SQL and set the values to it.
+     3. Now execute the SQL using JDBC API.
+
+
+  => Can JDBC API retrieve objects from the database?
+  Answer: No.
+* then how?
+
+* You have to do the following:
+   1. execute the sql query and retrieve the row into a ResultSet.
+   2. Manually write the code for converting  the row into a Java object.
+
+**** JDBC API cannot send/retrieve the Java objects directly from a Database. *********
+
+  => So, a new technology called ORM has been provided to send/retrieve the
+     Java Objects from a Database.
+
+  => ORM technology handles all the internal mismatches between
+     Object oriented model and Relational model.
+
+- ex1: In Java, we use equals() method to compare the two objects.
+         But in Database, the rows are compared with Primary key. So, ORM will handle this mismatch.
+
+- ex2: In Java, we use HAS-A relation to provide the relationship between two objects.
+         But in Database, the foreign key is used to provide the relationship between two tables. So, ORM will handle this mismatch.
+
+- The vendors have created multiple tools/frameworks based on ORM technology,
+    like Hibernate, MyBatis, TopLink, etc.
+
+- The most popular ORM framework is Hibernate.
+
+## Then what is JPA? (Java Persistence API)
+
+- Different ORM frameworks have followed their own way to implement ORM.
+    It means, each framework has developed their own API, and their own annotations, and configurations.
+
+- As a developer, if i am switching from one framework to another, then again
+    it will be like a new framework to learn.
+
+- So, SUN Microsystems, have provided a solution that, it has provided
+    a common standard specification for ORM. This common specification is called
+    Java Persistence API(JPA).
+
+- The ORM frameworks like Hibernate, EclipseLink, OpenJPA, etc.. they have provided
+    the concrete implementaton for JPA specification. So, we call them as
+    JPA vendors/JPA providers.
+
+- JPA is a specification, it doesn't contain actual code to perform the
+    database operations on its own. It is just a detailed blueprint.
+
+- Hibernate is an implementation of JPA specification. It provides the actual code and
+    functionality to follow the rules defined by JPA.
+
+- The ORM tools that provides concrete implementation for the JPA specification are
+    called JPA providers.
+
+
+
+# Spring Boot JPA properties
+
+These properties control how Spring Boot + JPA + Hibernate talk to the database.
+
+1. `spring.jpa.show-sql` ----> tells the Spring to print the SQL query on the console.
+2. `spring.jpa.properties.hibernate.format_sql` -----> tells the Spring to print the SQL in pretty format, for better readability.
+3. `spring.jpa.hibernate.ddl-auto` -----> controls the table creation and updation behaviour.
+4. `spring.jpa.database-platform` ------> tells Hibernate about which Database dialect to use.
+
+The possible values for `spring.jpa.hibernate.ddl-auto` property are,
+1. none
+2. validate
+3. update
+4. create
+5. create-drop
+
+- none -- do nothing. Used in Production.
+- validate – checks entity and table match.
+- update – create/alter tables. Used in development.
+- create -- drop and create tables. Used in Testing
+- create-drop --- creates tables at startup, drops at shutdown. Used in Junit.
+
+## what MySQLDialect class will do?
+
+==> org.hibernate.dialect.MySQLDialect tells Hibernate to translate
+     generic Java objects into SQL syntax and data types specific to
+     the MySQL database.
