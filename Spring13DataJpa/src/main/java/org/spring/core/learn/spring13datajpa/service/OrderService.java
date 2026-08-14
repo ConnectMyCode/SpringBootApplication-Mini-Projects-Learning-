@@ -61,13 +61,23 @@ public class OrderService {
         // CONCEPT: Stream API - sum all order amounts (like SQL's SUM aggregate,
         // but done in Java over the in-memory collection)
         double totalSpent = orders.stream()
+                .filter(order -> order.getStatus() != OrderStatus.CANCELED)
                 .mapToDouble(Order::getAmount)
                 .sum();
-
         // CONCEPT: Stream API + Collectors.groupingBy -> group orders by status and
         // count how many fall into each group. Produces a Map<OrderStatus, Long>.
+        /*The key idea to hold onto: groupingBy always takes a "how do I put things into piles"
+        function (Order::getStatus) as the first argument. The second argument is optional and answers "once a pile is built,
+        what do you want out of it?" — counting() says "just the size," but it could just as easily be Collectors.summingDouble(Order::getAmount)
+        (total money per status) or Collectors.toList() (the default, if you omit the second argument entirely).
+        That's also exactly the same idea as your totalSpent line above it
+        (.mapToDouble(...).sum()) — just applied per group instead of across the whole stream.
+        * */
         Map<OrderStatus, Long> countByStatus = orders.stream()
                 .collect(Collectors.groupingBy(Order::getStatus, Collectors.counting()));
+
+
+
 
         return new CustomerOrderSummary(
                 customer.getId(),
@@ -96,7 +106,7 @@ public class OrderService {
         try {
             // CONCEPT: Collections Framework - build a List<Future<...>>, one per customer
             List<Future<CustomerOrderSummary>> futures = allCustomers.stream()
-                    .map(customer -> executor.submit(() -> buildSummaryFor(customer)))
+                    .map( customer -> executor.submit(() -> buildSummaryFor(customer)))
                     .collect(Collectors.toList());
 
             // Now collect the results back - each future.get() blocks only until

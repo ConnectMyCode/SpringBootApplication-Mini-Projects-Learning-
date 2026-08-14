@@ -27,4 +27,5 @@ public class CustomerOrderSummary {
 
     // CONCEPT: Collections Framework - Map is used to hold "status -> count of orders"
     // e.g. { "DELIVERED": 3, "PENDING": 1 }
-    private Map<OrderStatus, Long> orderCountByStatus;}
+    private Map<OrderStatus, Long> orderCountByStatus;
+}
