@@ -1,0 +1,141 @@
+@PostConstruct and @PreDestroy:
+
+@PostConstruct : It tells the Spring to run a method after creating the bean and its dependencies are injected.
+
+@PreDestroy : It tells the Spring to run a method just before the Spring removes the bean from the container.
+
+Ex1:
+        +
+
+        @Component
+        Public class DatabaseManager {
+        
+        @Value(“${db.url}”)
+        Private String databaseURL;
+
+        @Value(“${db.user}”)
+        Private String dbUsername;
+
+          @Value(“${db.pwd}”)
+           Private String dbPassword;
+     
+           @PostConstruct
+            Public void openConnection() {
+                  // code to open a connection with DB
+            }
+            @PreDestroy
+            Public void clearConnection() {
+                  // code to close a connection with DB
+            }
+    }
+
+
+Ex2:
+
+    @Component
+    Public class ProductsCache {
+    
+    @PostConstruct
+    Public void loadProducts() {
+        // code to load the products into cache from DB
+    }
+    
+    @PreDestroy
+    Public void clearCache() {
+        // clear the products from the cache
+    }
+
+    }
+
+
+    @Inject :
+    
+    •	@Autowired and @Inject, both are used for Dependency injection only, but they came from different specifications.
+    •	@Autowired came from Spring framework and @Inject came from Jakarta. But @Inject can also be used in Spring.
+    •	
+        The difference is,
+    •	   @Autowired tells the spring that dependency is required. If the dependency doesn’t exist, then spring throws an exception. To tell the spring that dependency is optional, use an attribute required=false.
+    •	Ex:
+    •	     @Service
+    •	      Public class OrderSerivce {
+    •	            @Autowired(required=false)
+    •	            PaymentService paymentService;
+    •	      }
+    •	@Inject tells the Spring that the dependency is required. If dependency doesn’t exist, Spring will throw an exception. Here there is no “required” attribute.
+    
+    •	If multiple beans are found for autowiring, we have to use @Qualifier to resolve the ambiguity with @Autowired.
+    
+    •	If multiple beans are found for autowiring, we have to use @Named to resolve the ambiguity with @Inject.
+
+    Injecting Spring’s environment to a bean:
+    ------------------------------------------------------
+    •	It means,
+    •	1. Injecting its name to a bean.
+    •	2. Injectiong ApplicationContext to a bean.
+    •	By default, a Spring bean doesn’t know its id/name, with which it  is registered in the spring container.
+    •	By default, a Spring bean doesn’t know the Spring container, who is managing it.
+    •	Injecting the spring’s environment to a bean means, providing a bean with its name and ApplicationContext in which it is maintained.
+    •	To inect the environment, a spring bean has to implement BeanNameAware interface and ApplicationContextAware interface.
+
+
+
+    Ex:
+    @Service
+    public class PaymentService implements BeanNameAware, ApplicationContextAware {
+        private String name;
+        private ApplicationContext ctx;
+    
+    @Override
+    public void setBeanName(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public void setApplicationContext(ApplicationContext ctx) {
+        this.ctx = ctx;
+    }
+    }
+    
+InitializingBean and DisposableBean interfaces:
+
+•	InitializingBean tells the spring that, after a bean is created and its dependencies are injected, you have to execute its afterPropertieSet() method.
+
+•	DisposableBean tells the spring that,  before removing a bean from the container, you have to execute its destroy() method.
+
+    For ex:
+    @Component
+    public class MailComponent implements InitializingBean,
+    DisposableBean {
+        @Override
+        public void afterPropertiesSet() {
+            // code to connect with email-server
+        }
+        @Override
+        public void destroy() {
+            // code to release the connection with email-server
+        }
+    }
+
+    Bean life cycle:
+
+    •	Bean life cycle means, from object creation to until it is destroyed, an object undergoes with different stages, called lifecycle.
+    •	A bean life cycle in spring has 4 phases.
+    •	1. Instantiation
+    •	2. Initialization
+    •	3. Service
+    •	4. Destroy
+
+    •	Instantiation:  A bean is instantiated by the container.
+        •	Initialization:
+        •	    1) dependencies are injected to a bean.
+        •	    2) setBeanName() method of BeanNameAware interface is executed.
+        •	    3) setApplicationContext() method of ApplicationContextAware interface is executed.
+        •	    4) afterPropertiesSet() method of InitializingBean interface is executed.
+        •	    5) @PostConstruct method is executed.
+    
+    •	Service:  A bean will provide the services to the clients.
+   
+    •	Destroy:
+        •	    1) destory() method of DisposableBean interface is executed.
+        •	    2) @PreDestroy method is executed.
+

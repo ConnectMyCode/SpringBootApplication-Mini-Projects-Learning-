@@ -1,0 +1,47 @@
+# ================= TWO SEPARATE CONTAINERS =================
+# "app" and "mysql" are two independent containers. Docker Compose
+# creates a private network between them - each service reaches the
+# other USING ITS SERVICE NAME as a hostname ("mysql" below, NOT
+# "localhost" - each container has its own separate localhost).
+#
+# docker-compose automatically reads a ".env" file in this folder and
+# substitutes ${VARIABLE} references below. Copy .env.example to .env first:
+#   cp .env.example .env
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: fitclub-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-fitclub_db}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-change-me-locally}
+    ports:
+      - "3306:3306"
+    volumes:
+      - fitclub-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${DB_PASSWORD:-change-me-locally}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: fitclub-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_PORT: ${DB_PORT:-3306}
+      DB_NAME: ${DB_NAME:-fitclub_db}
+      DB_USERNAME: ${DB_USERNAME:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-change-me-locally}
+      SERVER_PORT: ${SERVER_PORT:-8080}
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+
+volumes:
+  fitclub-mysql-data:

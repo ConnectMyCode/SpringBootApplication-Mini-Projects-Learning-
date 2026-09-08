@@ -194,6 +194,63 @@ If not matched, then the container throws an exception.
 
 ![img.png](COmponentScanAnnotation.png)
 
+#Value Annotation ... 
+![ValueAnnotation.png](ValueAnnotation.png)
+![Value2Annotation.png](Value2Annotation.png)
 
 
 
+@PropertySource annotation:
+          
+  •	This annotation tells the spring about the location of the properties file. Now the spring will load the properties(key=value) into the Spring’s Environment.
+           
+ •	This annotation could be used at configuration class.
+     
+ Ex:
+      
+@Configuration
+      
+@PropertySource(“classpath:data.properties”)
+      
+public class AppConfig { }
+
+            
+            Note: Here the prefix  “classpath:” tells the spring that look for the properties file at src/main/resources.
+            
+            •@PropertySource is a Repetable annotation, which means, we can use it for more than once also.
+            
+      Ex:
+            @Configuration
+            @PropertySource(“classpath:data1.properties”)
+            @PropertySource(“classpath:data2.properties”)
+            public class AppConfig {
+            }
+
+![Scope1Annotations.png](Scope1Annotations.png)
+
+![ScopeSingletonAnnotation.png](ScopeSingletonAnnotation.png)
+
+prototype:  Spring creates a new object each time when the object is required.
+
+So, when scope of a bean is prototype, multiple objects can be created for a bean.
+
+![Scope1Annotations.png](Scope1Annotations.png)
+
+![RequestScope-Annotation.png](RequestScope-Annotation.png)
+
+![SessionScope.png](SessionScope.png)
+
+
+
+If a bean has scope “singleton”, then when Spring creates an object of it?
+Ans: During the Spring container startup. This is also early/eager instantiation.
+
+If a bean has scope “prototype”, then when Spring creates an object of it?   
+Ans: Whenever an object of that bean is required, the spring creates a new one, but not at the container startup. This is lazy instantiation.
+
+@Lazy:  It tells the Spring to create a bean only when it is first needed.
+It is used to tell the Spring that perform lazy initialization for a singleton bean.
+
+
+
+/*NOTE WHAT TO READ NEXT : GO TO SPRING8BEANLIFECYCLE...    */  
