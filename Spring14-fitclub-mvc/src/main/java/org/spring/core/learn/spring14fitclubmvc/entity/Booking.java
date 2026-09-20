@@ -51,6 +51,7 @@ public class Booking {
     private FitnessClass fitnessClass;
 
 
+
     @Column(nullable = false)
     private LocalDateTime bookingDate;
 

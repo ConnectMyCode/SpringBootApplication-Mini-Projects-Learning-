@@ -124,4 +124,4 @@ Java-level navigation shortcut on top of a relationship the *other* side
 already fully owns at the database level.
 
 
-![DB_Schema_FitClub_Spring_Project.png](DB_Schema_FitClub_Spring_Project.png)
+![DB_Schema_FitClub_Spring_Project.png](0_DB_Schema_FitClub_Spring_Project.png)
