@@ -10,7 +10,7 @@ public interface ClassBookingService {
 
     List<FitnessClass> listAllClasses();
 
-    void bookClass(Long memberId, Long classId);
+    Booking bookClass(Long memberId, Long classId);
 
     List<Booking> getMemberBookings(Long memberId);
 

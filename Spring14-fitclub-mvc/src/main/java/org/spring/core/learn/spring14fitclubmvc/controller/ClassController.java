@@ -46,10 +46,12 @@ public class ClassController {
      */
     @GetMapping
     public ResponseEntity<List<FitnessClassResponse>> listClasses(HttpSession session) {
+        Long memberId = requireLoggedIn(session);
+
         List<FitnessClass> classes = classBookingService.listAllClasses();
         Map<String, Long> bookingCounts = classBookingService.getConfirmedBookingCountByClassName();
 
-        Long memberId = (Long) session.getAttribute("loggedInMemberId");
+
         Set<Long> favoriteIds = memberId == null
                 ? Set.of()
                 : memberService.getFavoriteClasses(memberId).stream()
@@ -73,6 +75,7 @@ public class ClassController {
         classBookingService.bookClass(memberId, classId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
 
 
     // toggles ON - idempotent, thanks to Set semantics

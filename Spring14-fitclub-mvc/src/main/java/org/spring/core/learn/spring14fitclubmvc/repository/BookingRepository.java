@@ -20,7 +20,7 @@ public interface BookingRepository extends JpaRepository<Booking,Long>{
     @Query("SELECT b FROM Booking b " +
            "JOIN FETCH b.member " +
            "JOIN FETCH b.fitnessClass "+
-        "WHERE b.member = :memberId "+
+        "WHERE b.member.id = :memberId "+
          "ORDER BY b.bookingDate DESC")
     List<Booking> findMemberBookingWithDetails(@Param("memberId") Long memberId);
 
