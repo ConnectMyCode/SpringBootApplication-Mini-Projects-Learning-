@@ -28,6 +28,8 @@ Project parameters:
 
 •	3. Now maven adds the dependencies to the compile classpath, and test classpath.
 
+Local Repository : means you own laptop the dependecies are stroe inside the ".m2" folder where all dependecies are pulled from central reppository by the maven tool .
+Central repository: means it is on the internet where all the dependecies are stored... 
 
 ![MavenProjectLifeCycleStages.png](MavenProjectLifeCycleStages.png)
 

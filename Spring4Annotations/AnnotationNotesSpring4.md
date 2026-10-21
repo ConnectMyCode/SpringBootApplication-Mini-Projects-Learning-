@@ -145,7 +145,35 @@ Public interface OrderRepository extends JpaRepository
                           return new RestTemplate();
                   }
         }
+      2. How does Spring process @Bean methods?
+Consider this example:
+@Configuration
+public class SecurityConfig {
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+
+The execution flow is:
+Spring discovers SecurityConfig
+
+Spring processes the @Configuration class and identifies its @Bean method.
+
+Spring invokes passwordEncoder().
+
+The method returns a BCryptPasswordEncoder object.
+
+Spring registers the returned object as a bean in the application context.
+
+Spring normally creates singleton beans eagerly during startup, although the exact timing depends on the bean's scope, lazy-initialization settings, and dependencies.
+3. Your statement, corrected
+   You can explain it like this:
+   @Configuration tells Spring that a class contains configuration instructions and potentially @Bean methods. During application startup, Spring processes this class, invokes its @Bean methods when the corresponding beans need to be created, and registers their returned objects in the Spring container so they can be managed and injected where required.
+
+One final distinction: Spring doesn't automatically execute every method in a @Configuration class. It invokes methods annotated with @Bean as part of bean creation; ordinary methods are not automatically executed just because the class has @Configuration.
 
 
       What is bean autowiring? 
@@ -194,11 +222,14 @@ If not matched, then the container throws an exception.
 
 ![img.png](COmponentScanAnnotation.png)
 
+
+
+
 #Value Annotation ... 
 ![ValueAnnotation.png](ValueAnnotation.png)
 ![Value2Annotation.png](Value2Annotation.png)
 
-
+                              
 
 @PropertySource annotation:
           
@@ -225,6 +256,7 @@ public class AppConfig { }
             @PropertySource(“classpath:data2.properties”)
             public class AppConfig {
             }
+
 
 ![Scope1Annotations.png](Scope1Annotations.png)
 

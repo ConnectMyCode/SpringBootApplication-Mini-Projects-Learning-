@@ -1,0 +1,401 @@
+/* ===== FitClub shared layout ===== */
+
+.app-container {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+/* ===== Navbar ===== */
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 28px;
+  background: #111a2b;
+  border-bottom: 1px solid var(--border);
+}
+
+nav h2 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+nav a {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Current Session and Logout sections */
+
+nav > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav h2:not(:first-child) {
+  margin-bottom: 0;
+}
+
+/* Keep Navbar buttons slightly more compact */
+
+nav button {
+  min-height: 38px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+}
+
+/* ===== General page headings and buttons ===== */
+
+#root > div > h2 {
+  margin-bottom: 20px;
+}
+
+#root > div > button {
+  margin-bottom: 20px;
+}
+/* ===== Classes page layout ===== */
+
+#root > div:has(> button) {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* Each ClassCard is a direct div inside the Classes page.
+   Use a grid for the list of cards. */
+#root > div:has(> button) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+/* Keep the page heading and Get Classes button across both columns */
+#root > div:has(> button) > h2,
+#root > div:has(> button) > button,
+#root > div:has(> button) > p {
+  grid-column: 1 / -1;
+}
+
+/* Class card */
+#root > div:has(> button) > div {
+  min-width: 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+}
+
+/* Class ID and name */
+#root > div:has(> button) > div > h2:first-child {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+#root > div:has(> button) > div > h2:nth-child(2) {
+  font-size: 1.5rem;
+}
+
+/* Schedule and trainer headings */
+#root > div:has(> button) > div > h3 {
+  margin-top: 22px;
+  color: var(--accent);
+}
+
+/* Trainer details */
+#root > div:has(> button) > div > div {
+  padding: 10px;
+  margin: 8px 0;
+  background: #10192a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Actions */
+/* ===== Class action buttons ===== */
+
+#root > div:has(> button) > div > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 8px 0 0;
+}
+
+/* Keep both buttons on the same row */
+#root > div:has(> button) > div > button:first-of-type {
+  margin-top: 16px;
+}
+
+#root > div:has(> button) > div > button + button {
+  margin-top: 16px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+#root > div:has(> button) > div > button + button:hover {
+  background: rgb(184 243 74 / 10%);
+}
+
+/* Stack buttons only on narrow screens */
+@media (max-width: 600px) {
+  #root > div:has(> button) > div > button {
+    width: 100%;
+    margin: 8px 0 0;
+  }
+}
+
+
+/* ===== Class card polish ===== */
+
+#root > div:has(> button) > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Reduce unnecessary vertical gaps */
+#root > div:has(> button) > div > p {
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+#root > div:has(> button) > div > h3 {
+  margin: 18px 0 10px;
+}
+
+/* Keep trainer panels compact */
+#root > div:has(> button) > div > div {
+  padding: 10px 12px;
+}
+
+#root > div:has(> button) > div > div p {
+  margin: 4px 0;
+}
+
+/* Keep action buttons at the bottom of cards */
+#root > div:has(> button) > div > button:first-of-type {
+  margin-top: auto;
+}
+
+#root > div:has(> button) > div > button {
+  align-self: flex-start;
+  margin-right: 8px;
+}
+
+/* Better button spacing */
+#root > div:has(> button) > div > button + button {
+  margin-top: 12px;
+}
+
+/* Smaller screens */
+@media (max-width: 760px) {
+  #root > div:has(> button) > div > button {
+    align-self: stretch;
+    margin-right: 0;
+  }
+}
+
+/* ===== My Bookings page ===== */
+
+#root > div:has(> h2) {
+  box-sizing: border-box;
+}
+
+#root > div:has(> h2) > h2 {
+  margin-bottom: 24px;
+  font-size: 2rem;
+}
+
+/* Booking list container */
+#root > div:has(> h2) > div:has(> div > h3) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Individual booking card */
+#root > div:has(> h2) > div:has(> div > h3) > div {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+#root > div:has(> h2) > div:has(> div > h3) > div:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Booking class name */
+#root > div:has(> h2) > div:has(> div > h3) h3 {
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 1.25rem;
+}
+
+/* Booking ID, date, and status */
+#root > div:has(> h2) > div:has(> div > h3) p {
+  margin: 10px 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive layout */
+@media (max-width: 760px) {
+  #root > div:has(> h2) > div:has(> div > h3) {
+    grid-template-columns: 1fr;
+  }
+
+  #root > div:has(> h2) > div:has(> div > h3) > div {
+    padding: 18px;
+  }
+}
+
+/* ===== My Bookings refinements ===== */
+
+/* Add consistent spacing around the page */
+#root > div:has(> h2) {
+  padding: 28px 24px;
+}
+
+/* Make the page heading more balanced */
+#root > div:has(> h2) > h2 {
+  margin-bottom: 28px;
+}
+
+/* Improve booking detail spacing */
+#root > div:has(> h2) > div:has(> div > h3) > div p {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+
+/* Highlight confirmed booking status */
+#root > div:has(> h2) > div:has(> div > h3) > div p:last-child {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgb(184 243 74 / 12%);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Responsive page padding */
+@media (max-width: 600px) {
+  #root > div:has(> h2) {
+    padding: 24px 16px;
+  }
+}
+
+/* ===== Login and Register forms ===== */
+
+.login-container,
+.register-container {
+  width: min(440px, calc(100% - 32px));
+  margin: 56px auto;
+  padding: 32px;
+  box-sizing: border-box;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 18%);
+}
+
+/* Form heading */
+.login-container > h2,
+.register-container > h2 {
+  margin-bottom: 28px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* Form layout */
+.login-container form,
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Label and input groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Inputs */
+.form-group input {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  color: var(--text);
+  background: #0b1220;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgb(184 243 74 / 15%);
+}
+
+/* Submit button */
+.login-container form button,
+.register-container form button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* Success and error messages */
+.login-container > p,
+.register-container > p {
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+/* Mobile spacing */
+@media (max-width: 600px) {
+  .login-container,
+  .register-container {
+    margin: 32px auto;
+    padding: 24px 20px;
+  }
+}
