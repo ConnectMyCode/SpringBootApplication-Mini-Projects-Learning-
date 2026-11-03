@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+prod.env
+prod.env.*
+target/
+.idea/
+.vscode/
+*.iml
